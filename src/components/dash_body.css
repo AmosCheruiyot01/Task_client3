@@ -1,0 +1,41 @@
+.body_container{
+    display: grid;
+    grid-template-columns: 15% 85%;
+    gap: 5px;
+    height: 60vh;
+}
+
+.body_container > div{
+
+    /* background-color: rgba(0, 0, 0, 0.534); */
+}
+
+.body_left{
+display: flex;
+flex-direction: column;
+
+}
+
+.notifications{
+    margin-bottom: 40%;
+    /* background-color: antiquewhite; */
+}
+
+.notifications > button{
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.teams, .notifications{
+    background-color: rgba(72, 111, 91, 0.507);
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+.teams > button{
+    color: green;
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+    
+}

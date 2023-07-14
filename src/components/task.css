@@ -1,0 +1,93 @@
+.task{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    gap: 5px;
+    padding: 5px;
+}
+
+.task > div{
+    background-color: rgba(198, 194, 198, 0.347);
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    
+}
+
+.tasks{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+ 
+.tasks>p {
+    background-color: rgb(32, 31, 31);
+    padding: 5px;
+    margin-top: -1rem;
+    border-radius: 5px;
+}
+span{
+   margin-top: -1rem;
+   margin-bottom: 0.4rem;
+  }
+
+.task_dates{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    margin-top: -1.5rem;
+}
+.task_header{
+    background-color: rgb(59, 109, 91);
+}
+
+.task_header, .task_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    text-transform: capitalize;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.progress{
+    border: 2px solid rgb(19, 174, 96);
+    display: flex;
+    height: 1.5rem;
+}
+
+.progress_bar{
+    background-color: rgb(35, 120, 30);
+    width: 60%;
+    text-align: center;
+    display: flex;
+    align-self: center;
+}
+
+.progress_wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.progress_wrapper>div{
+    min-width: 60%;
+}
+
+
+
+
+
+/* media queries */
+@media screen and (max-width: 1400px){
+    .task_dates{
+        display: block;
+    }
+    .task_dates>p:not(:first-child){
+        margin-top: -1rem;
+    }
+    .progress_wrapper{
+        margin-top: -1rem;
+    }
+}

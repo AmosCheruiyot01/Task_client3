@@ -1,0 +1,15 @@
+.header{
+    /* background-color:rgb(87, 87, 87); */
+    color: orange;
+    height: 20vh;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+    text-align: center;
+    
+}
+
+.header h3{
+   /* ALIGN H3 AT CENTER */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}

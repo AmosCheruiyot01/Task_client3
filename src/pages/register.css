@@ -1,0 +1,26 @@
+.register{
+    background-color: #3a154789;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form{
+    background-color: #724f74;
+    border-radius: 10px;
+}
+
+.form>input{
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    font-size: 1.2rem;
+}
+
+h3{
+    font-size: 2rem;
+}

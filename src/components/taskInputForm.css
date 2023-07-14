@@ -1,0 +1,35 @@
+.main{
+    background-color: rgba(14, 20, 47, 0.436);
+    padding: 10px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50vw;
+    /* align div at the center of the page */
+    margin: 0 auto;
+    transform: translate(0%, 50%);
+}
+
+.creds{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 50vw;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.desc{
+   
+    width: 70%;
+    min-height: fit-content;
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+span{
+    float: left;
+}
