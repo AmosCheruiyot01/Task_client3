@@ -7,8 +7,33 @@ import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import { comments } from './dataComments';
 
 function Comments() {
-  const [names, setNames] = useState('');
+  let [names, setNames] = useState('');
   const [filteredComments, setFilteredComments] = useState([]);
+  const [thumbsUp, setThumbsUp] = useState(0);
+
+
+  // picking unique string from array of objects
+  function pickUniqueString(arr) {
+    const uniqueString = [];
+    const seenString = new Set();
+
+    for (const element of arr) {
+      if (!seenString.has(element.by)) {
+        uniqueString.push(element.by)
+        seenString.add(element.by)
+      }
+    }
+    return uniqueString;
+  }
+
+  const uniqueString = pickUniqueString(comments);
+  console.log(uniqueString);
+
+  // thumbs up and thumbs down votes
+  const incrementor = () => {
+    setThumbsUp(thumbsUp + 1);
+  };
+
 
   const schema = yup.object().shape({
     comment: yup.string().required('Comment is required'),
@@ -27,15 +52,15 @@ function Comments() {
     console.log(data);
     reset();
   };
+  // console.log(names);
 
   useEffect(() => {
-   if(names !== ''){
-    console.log(names);
-    filterComments();
-   }
-   else{
-    setFilteredComments(comments)
-   }
+    if (names !== '') {
+      filterComments();
+    }
+    else {
+      setFilteredComments(comments)
+    }
   }, [names]);
 
   const filterComments = () => {
@@ -48,13 +73,14 @@ function Comments() {
       <div className="comments">
         <div className="comments_left_section">
           <h4>contributors</h4>
-          {comments.map((contributor, index) => (
+          <p onClick={() => setNames('')} className = {`btn ${names === '' ? 'active' : ''}`}>All</p>
+          {uniqueString.map((contributor, index) => (
             <p
-              className={`btn ${contributor.by === names ? 'active' : ''}`}
+              className={`  btn ${contributor === names ? 'active' : ''}`}
               key={index}
-              onClick={() => setNames(contributor.by)}
+              onClick={() => setNames(contributor)}
             >
-              {contributor.by}
+              {contributor}
             </p>
           ))}
         </div>
@@ -64,16 +90,18 @@ function Comments() {
             <div className="comment_display">
               {filteredComments.map((comment, index) => (
                 <React.Fragment key={index}>
-                  <p>{comment.comment}</p>
-                  <div className="comment_vote">
-                    <p>
-                      <FaThumbsUp />12
-                    </p>
-                    <p>
+                  <p>{comment.comment}
+                  <p>
+                  <button className = "btn" onClick={incrementor}>
+                      <FaThumbsUp />{thumbsUp}
+                    </button>
+                    <button className = "btn">
                       <FaThumbsDown />52
-                    </p>
-                    <p>{comment.by}</p>
-                  </div>
+                    </button>
+                    <span className="comment_by"><b>by {comment.by}</b></span>
+                  </p>
+                  </p>
+                 
                 </React.Fragment>
               ))}
             </div>

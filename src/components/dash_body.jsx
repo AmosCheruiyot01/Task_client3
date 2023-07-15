@@ -1,10 +1,28 @@
-import React from 'react';
+import  {useState} from 'react';
 import './dash_body.css';
 import Task from './task';
 import PropTypes from 'prop-types';
+import { InitialTasks } from './data';
 
 function Dash_body({ priority, profile, filter }) {
+  const [active, setActive] = useState('all');
+
+console.log(active);
   
+// unique teams
+function uniqueTeams() {
+  let teams = [];
+  InitialTasks.map((task) => {
+    if (!teams.includes(task.team)) {
+      teams.push(task.team);
+    }
+  });
+  return teams;
+}
+
+const teams = uniqueTeams();
+
+
   return (
     <div className='body_container'>
       <div className="body_left">
@@ -17,9 +35,9 @@ function Dash_body({ priority, profile, filter }) {
         <div className="teams">
           <h4>Teams:</h4>
           <button className='btn'>All</button>
-          <button className='btn'>tumbili</button>
-          <button className='btn'>scorpion</button>
-          <button className='btn'>simba</button>
+       { teams.map((team) => (
+          <button className={`btn`}  key ={team}  onClick={() => setActive(team)}>{team}</button>
+          ))} 
         </div>
       </div>
       <div className="body_right">

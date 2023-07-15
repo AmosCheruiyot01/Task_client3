@@ -12,7 +12,8 @@ const schema = yup.object().shape({
     start: yup.string().required(),
     end: yup.string().required(),
     priority: yup.string().required(),
-    by: yup.string().required()
+    by: yup.string().required(),
+    team: yup.string().required()
 })
 
 const {register, handleSubmit, errors} = useForm({
@@ -25,9 +26,10 @@ const onsubmit = (data) => {
 
   return (
     
+<div className="taskInput">
 <form action="" className='main' onSubmit={handleSubmit(onsubmit)}>
 
-<input type="text" {...register("taskHead")}placeholder='enter your task head' style={{display:"block", textAlign:"center"}} />
+<input type="text" {...register("taskHead")}placeholder='enter your task head' className='util' />
 
 <textarea name="" id="" cols="50" rows="6" {...register("description")}placeholder='description'></textarea>
 <div className="creds">
@@ -39,9 +41,12 @@ const onsubmit = (data) => {
 <input type="text" {...register("by")} placeholder='by:' />
 <input type="text" {...register("priority")} placeholder='priority:' />
 </div>
-<input type="submit" className='btn'/>
+<input type="text" {...register("team")} placeholder='team:' />
+
+<input type="submit" className='btn submit'/>
 
 </form>
+</div>
 
     
   )

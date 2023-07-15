@@ -4,9 +4,9 @@
     grid-template-rows: 20vh 60vh;
 gap: 10px;  
 background-color: #59425d;
-height: 100vh;
+height: 200vh;
 }
-}
+
 
 .container >div{
     /* background-color: rgba(0, 0, 0, 0.468); */
