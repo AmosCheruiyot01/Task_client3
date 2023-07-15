@@ -1,7 +1,7 @@
 // THE HEART BEAT OF OUR APP
 import { createContext, useEffect, useReducer } from "react";
 // creastecontext for creating context, useEffect for  swapping context, useReducer for managing context
-import Reducer from "./Reducer";
+import Reducer from "./reducer";
 
 // /initial state
 const INITIAL_STATE = {
