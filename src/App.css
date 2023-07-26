@@ -1,5 +1,8 @@
 #root {
   font-family: sans-serif;
+  background-color: rgb(89, 60, 97);
+  mmin-height: fit-content;
+  min-height: 200vh;
   color: white
 }
 

@@ -3,22 +3,46 @@ import './login.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Axios from 'axios'
+import { apiDomain } from '../utils/utils'
+import { Context } from '../components/context/userContext/context'
+import { useContext } from 'react'
+
 
 
 function Login() {
 
+    // use context
+    const { dispatch } = useContext(Context)
+
+    const Navigate = useNavigate()
+
     const schema = yup.object().shape({
         username: yup.string().required(),
-        password: yup.string().required()
+        password: yup.string().required(),
+        team: yup.string().required()
+
     })
 
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(schema)
     })
 
-    const onsubmit = (data) => {
-        console.log(data)
+    const onsubmit = async(data) => {
+        // console.log(data)
+        await Axios.post(`${apiDomain}/auth/login`, data)
+        .then(({data}) => {
+            if(data.token) {
+                dispatch({type: 'LOGIN_SUCCESS', payload: data})
+                // alert('login successful')
+                Navigate('/dash')
+            }
+        })
+        .catch(err => {
+            alert('login failed, error: ' + err.message)
+        }
+            )
     }
 
   
@@ -46,6 +70,11 @@ function Login() {
 
                 <>
                     <input type="text" {...register("password")} placeholder='password' />
+                    {/* <p>{errors.username?.username}</p> */}
+                </>
+
+                <>
+                    <input type="text" {...register("team")} placeholder='team' />
                     {/* <p>{errors.username?.username}</p> */}
                 </>
 

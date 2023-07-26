@@ -17,16 +17,24 @@
 }
 
 .comment_display{
-    /* background-color: rgba(91, 28, 28, 0.336); */
+    background-color: rgba(91, 28, 84, 0.336);
     border-radius: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+/* align-items: flex-end; */
 }
 
+.other_comment{
+    display: flex;
+    align-items: flex-end 
+}
 
-.comment_display > p{
-    margin: 5px;
-    padding: 5px;
-    background-color: #4a1e4e56;    border-radius: 10px;
+.accessor > p{
+    max-width: 80%;
+    display: block;
+    background-color: #cabbca49;    border-radius: 10px;
 }
  
 /* .comment_vote{

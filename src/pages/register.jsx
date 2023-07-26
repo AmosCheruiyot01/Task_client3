@@ -5,14 +5,18 @@ import {useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
 import './register.css'
+import Axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { apiDomain } from '../utils/utils'
 
 function Register() {
+
+const navigate = useNavigate();
 
     const schema = yup.object().shape({
         username: yup.string().required(),
         password: yup.string().required(),
-        email: yup.string().required(),
-        confirmpassword: yup.string().required(),
+        email: yup.string().required().email('Invalid email format'),
         team: yup.string().required()
 
     })
@@ -21,8 +25,20 @@ function Register() {
         resolver: yupResolver(schema)
     })
 
-    const onsubmit = (data) => {
+    const onsubmit = async (data) => {
         console.log(data)
+        await Axios
+        .post(`${apiDomain}/auth/register`, data)
+        .then((response) => {
+            console.log(response.data.message);
+            alert(response.data.message);
+            navigate('/');
+        })
+        .catch((error) => {
+            console.log(error.response.data.error);
+            alert(error.response.data.error);
+            alert(error.message);
+        });
     }
 
   return (
@@ -45,7 +61,7 @@ function Register() {
     </>
 
     <>
-    <input type="text" {...register('confirmpassword')} placeholder='confirmpassword' />
+    {/* <input type="text" {...register('confirmpassword')} placeholder='confirmpassword' /> */}
     {/* <p>{errors.username?.message}</p> */}
     </>
 

@@ -3,8 +3,8 @@
     display: grid;
     grid-template-rows: 20vh 60vh;
 gap: 10px;  
-background-color: #59425d;
-height: 200vh;
+/* background-color: #59425d; */
+/* height: 200vh; */
 }
 
 

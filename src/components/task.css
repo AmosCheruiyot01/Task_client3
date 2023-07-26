@@ -54,7 +54,7 @@ span{
     border: 2px solid rgb(19, 174, 96);
     display: flex;
     height: 1.5rem;
-}
+    border-radius: 5px;}
 
 .progress_bar{
     background-color: rgb(35, 120, 30);
@@ -62,6 +62,21 @@ span{
     text-align: center;
     display: flex;
     align-self: center;
+}
+
+.delete{
+    display: none;
+}
+
+.done{
+    background-color: red;
+    color: white;
+}
+
+.disabled_button{
+    pointer-events: none;
+    opacity: 0.6;
+    background-color: rgba(220, 138, 38, 0.728);
 }
 
 .progress_wrapper{

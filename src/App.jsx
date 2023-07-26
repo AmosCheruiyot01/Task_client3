@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
@@ -12,19 +12,25 @@ import Comments from './components/comments'
 
 
 
+export const appContext = createContext();
 function App() {
+const [room, setRoom] = useState('');
+const[describer, setDescriber] = useState('');
 
   return (
     <>
-      <BrowserRouter>
+    <appContext.Provider value={{room, setRoom, describer, setDescriber}}>
+      
+    <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/dash" element={<Dashboard />} />
+          <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/task" element={<TaskInputForm />} />
           <Route path="/comments" element={<Comments />} />
         </Routes>
       </BrowserRouter>
+      </appContext.Provider>
 
     </>
   )
